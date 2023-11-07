@@ -42,3 +42,23 @@ Open "System Settings" and go to "Brightness & Lock"
 
     "Turn screen off when inactive for:" Never
     "Lock": OFF
+
+
+## Install Deepstream
+
+Gstreamer Dependencies
+
+```bash
+sudo apt install \
+libssl1.1 \
+libgstreamer1.0-0 \
+gstreamer1.0-tools \
+gstreamer1.0-plugins-good \
+gstreamer1.0-plugins-bad \
+gstreamer1.0-plugins-ugly \
+gstreamer1.0-libav \
+libgstreamer-plugins-base1.0-dev \
+libgstrtspserver-1.0-0 \
+libjansson4 \
+libyaml-cpp-dev
+``
