@@ -8,11 +8,16 @@ sudo apt-get autoremove
 sudo apt-get autoclean
 ```
 
+# Upgrade pip
+
+```bash
+sudo apt install python3-pip
+sudo pip3 install --upgrade pip
+```
 
 # Install jtop
 
 ```bash
-sudo apt install python3-pip
 sudo -H pip3 install -U jetson-stats
 ```
 
@@ -39,7 +44,7 @@ sudo systemctl restart docker.service
 sudo usermod -aG docker $USER
 ```
 
-## Turn Off 
+## Turn Off Screen Dim and Lock
 
 Open "System Settings" and go to "Brightness & Lock"
 
@@ -64,4 +69,12 @@ libgstreamer-plugins-base1.0-dev \
 libgstrtspserver-1.0-0 \
 libjansson4 \
 libyaml-cpp-dev
-``
+```
+
+```bash
+# Find the version for the jetpack installed
+apt search deepstream
+
+# install it
+sudo apt install deepstream-6.0
+```
