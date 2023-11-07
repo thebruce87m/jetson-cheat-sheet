@@ -9,11 +9,14 @@ sudo apt-get autoclean
 ```
 
 
+# Install jtop
 
 ```bash
 sudo apt install python3-pip
 sudo -H pip3 install -U jetson-stats
 ```
+
+# Configure Docker
 
 Edit /etc/docker/daemon.json
 ```bash
