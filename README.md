@@ -78,3 +78,14 @@ apt search deepstream
 # install it
 sudo apt install deepstream-6.0
 ```
+
+Run a video file
+
+```bash
+gst-launch-1.0 -e filesrc location=video.mp4 \
+! qtdemux \
+! h265parse \
+! nvv4l2decoder \
+! nvvideoconvert \
+! nvoverlaysink
+```
