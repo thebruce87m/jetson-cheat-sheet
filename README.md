@@ -89,3 +89,39 @@ gst-launch-1.0 -e filesrc location=video.mp4 \
 ! nvvideoconvert \
 ! nvoverlaysink
 ```
+
+# OpenCV
+
+## Get frames from video and then spit them back out to screen. No X11 etc involved
+```python
+import cv2
+
+
+# Input
+source = "filesrc location=video.mp4 ! qtdemux ! h265parse ! nvv4l2decoder ! nvvideoconvert ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
+cap = cv2.VideoCapture(source, cv2.CAP_GSTREAMER)   
+
+
+
+# Output to screen
+gst_out = "appsrc ! video/x-raw, format=BGR ! videoconvert ! video/x-raw, format=BGRx ! videoconvert !  nvvideoconvert ! video/x-raw(memory:NVMM), format=I420 ! nvoverlaysink sync=0"
+out = cv2.VideoWriter(gst_out, cv2.CAP_GSTREAMER, 0, 20, (3840,2160)) 
+
+                                                                                                                                                                                          
+while cap.isOpened():
+
+    # Get frame from input                                        
+    ret, frame = cap.read()
+    
+                                                                                                                                                                                         
+    if not ret:                                                      
+        print("Failed to grab frame")     
+        break  
+        
+    # Write frame to output (screen in our case)    
+    out.write(frame)
+        
+        
+out.release()                                                                                                                    
+cap.release() 
+```
