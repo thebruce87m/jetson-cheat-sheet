@@ -98,6 +98,7 @@ import cv2
 
 
 # Input
+# Note if the jetson can't keep up, use `appsink drop=1` to drop frames and just parse the ones you can
 source = "filesrc location=video.mp4 ! qtdemux ! h265parse ! nvv4l2decoder ! nvvideoconvert ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
 cap = cv2.VideoCapture(source, cv2.CAP_GSTREAMER)   
 
